@@ -3,7 +3,7 @@ package jakub.izbicki.java.lab5;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import jakub.izbicki.java.lab5.commons.GuiceModule;
-import jakub.izbicki.java.lab5.matrix.MatrixDimensionsController;
+import jakub.izbicki.java.lab5.matrixdimensions.MatrixDimensionsController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

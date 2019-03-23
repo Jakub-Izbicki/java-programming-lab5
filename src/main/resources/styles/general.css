@@ -25,7 +25,7 @@
 }
 
 .button:pressed {
-    -fx-background-color: #EEEEEE;
+    -fx-background-color: #8d8d8d;
 }
 
 .text-field:focused {
@@ -39,4 +39,8 @@
 
 .table-row-cell:selected {
     -fx-background-color: #5DE485;
+}
+
+.errorText {
+    -fx-fill: #ff261f;
 }

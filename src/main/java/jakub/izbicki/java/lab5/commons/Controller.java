@@ -1,6 +1,7 @@
 package jakub.izbicki.java.lab5.commons;
 
 import jakub.izbicki.java.lab5.App;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -13,27 +14,39 @@ import java.util.ResourceBundle;
 
 public abstract class Controller implements Initializable {
 
+    public static final String WINDOW_WIDTH_SMALL_KEY = "window.small.width";
+
+    public static final String WINDOW_HEIGHT_SMALL_KEY = "window.small.height";
+
     private static final String DEFAULT_BUNDLE = "bundles.messages";
 
     private static final String STAGE_TITLE = "App";
 
     private static final String DEFAULT_CSS_FILE_PATH = "/styles/general.css";
 
-    private static final String WINDOW_WIDTH_SMALL_KEY = "window.small.width";
-
-    private static final String WINDOW_HEIGHT_SMALL_KEY = "window.small.height";
-
     private static final String COULD_NOT_LOAD_FXML = "Could not load FXML file from location: ";
 
-    private Parent fxmlRoot;
+    protected Stage stage;
 
-    private Stage stage;
+    private Parent fxmlRoot;
 
     public Stage createStage() {
         Properties prop = new Properties();
         return createStage(
                 Double.parseDouble(prop.get(WINDOW_WIDTH_SMALL_KEY)),
                 Double.parseDouble(prop.get(WINDOW_HEIGHT_SMALL_KEY)));
+    }
+
+    public void showLater(double windowWidth, double windowHeight) {
+        Platform.runLater(() -> {
+            createStage(windowWidth, windowHeight).show();
+        });
+    }
+
+    protected void closeLater() {
+        Platform.runLater(() -> {
+            stage.close();
+        });
     }
 
     private Stage createStage(double windowWidth, double windowHeight) {
